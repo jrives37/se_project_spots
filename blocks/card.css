@@ -3,15 +3,13 @@
   width: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 8px;
 }
 
 .card__content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+
   padding: 12px 0 0;
 }
 
@@ -22,6 +20,14 @@
   border: none;
   background-color: transparent;
   opacity: 40%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  flex-shrink: 0;
+}
+
+.card__like-btn:hover {
+  opacity: 0.7;
 }
 
 .card__title {
@@ -31,6 +37,12 @@
   font-size: 20px;
   line-height: 1.2;
   color: #212121;
+  min-width: 0;
+  flex: 1;
+  justify-content: space-between;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 627px) {
