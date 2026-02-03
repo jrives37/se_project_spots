@@ -43,7 +43,8 @@
   cursor: pointer;
   border-style: none;
   padding: 0;
-  background: transparent;
+  background-color: transparent;
+  background-repeat: no-repeat;
 }
 
 .modal__close-btn:hover {
@@ -70,7 +71,6 @@
   margin: 0 0 32px;
   font: "Poppins";
   font-size: 16px;
-  color: rgba(33, 333, 33, 0.7);
 }
 
 .modal__input {
