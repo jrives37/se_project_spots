@@ -24,6 +24,7 @@
   background-position: center;
   background-size: contain;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .card__like-btn:hover {

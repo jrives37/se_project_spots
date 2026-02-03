@@ -1,6 +1,6 @@
 .modal {
   visibility: hidden;
-  background-color: #00000000;
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
   right: 0;
@@ -14,6 +14,7 @@
   transition:
     visibility 0s linear 0.5s,
     opacity 0.5s linear;
+  font: "Poppins", Arial, sans-serif;
 }
 
 .modal_is-opened {
@@ -29,6 +30,7 @@
   background-color: #ffff;
   padding: 32px 50px;
   position: relative;
+  box-sizing: border-box;
 }
 
 .modal__close-btn {
@@ -38,13 +40,25 @@
   width: 40px;
   height: 40px;
   background-image: url(../images/Xbtn.svg);
+  cursor: pointer;
+  border-style: none;
+  padding: 0;
+  background: transparent;
+}
+
+.modal__close-btn:hover {
+}
+
+.modal__close-btn:focus {
 }
 
 .modal__title {
   margin: 0 0 32px;
-  font: "Poppins";
+  font: "Poppins", Arial, sans-serif;
   font-weight: 500;
   font-size: 32px;
+  line-height: 1;
+  color: #212121;
 }
 
 .modal__form {
@@ -56,6 +70,7 @@
   margin: 0 0 32px;
   font: "Poppins";
   font-size: 16px;
+  color: rgba(33, 333, 33, 0.7);
 }
 
 .modal__input {
@@ -65,6 +80,11 @@
   padding: 8px;
   font: "Poppins";
   font-size: 20px;
+  box-sizing: border-box;
+  border: 1px solid rgba(33, 33, 33, 0.7);
+  border-radius: 8px;
+  padding: 16px 12px;
+  line-height: 1;
 }
 
 .modal__input::placeholder {
@@ -80,10 +100,30 @@
   width: 100%;
   padding: 18px 32px;
   border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal__submit-btn:hover {
 }
 
 @media screen and (max-width: 627px) {
   .modal__submit-btn {
     max-width: none;
+  }
+  .modal__container {
+    padding: 22px 12px 12px;
+  }
+  .modal__close-btn {
+    top: 22px;
+    right: 12px;
+  }
+  .modal__title {
+    font-size: 20px;
+  }
+  .modal__input {
+    font-size: 16px;
+  }
+  .modal__form {
+    margin-top: 34px;
   }
 }
