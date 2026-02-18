@@ -1,3 +1,10 @@
+.card {
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 .card__image {
   height: 413px;
   width: 100%;
@@ -27,8 +34,38 @@
   cursor: pointer;
 }
 
+.card__like-btn-active {
+  background-image: url(../images/like.svg);
+  opacity: 1;
+}
+
 .card__like-btn:hover {
   opacity: 0.7;
+}
+
+.card__like-btn-active:hover {
+  opacity: 0.4;
+}
+
+.card__delete-btn {
+  background-image: url(../images/delete-hover.svg);
+  height: 32px;
+  width: 32px;
+  border: none;
+  background-color: transparent;
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.card__delete-btn:hover {
+  background-image: url(../images/delete.svg);
 }
 
 .card__title {
