@@ -11,6 +11,7 @@
   object-fit: cover;
   display: block;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .card__content {
@@ -26,7 +27,7 @@
   width: 23px;
   border: none;
   background-color: transparent;
-  opacity: 40%;
+  opacity: 0.4;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -81,6 +82,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.card__image:hover {
 }
 
 @media screen and (max-width: 627px) {

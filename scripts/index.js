@@ -44,12 +44,14 @@ const descriptionInputEl = editProfileModal.querySelector(
 
 const addCardModal = document.querySelector("#new-post-modal");
 const addCardCloseBtn = addCardModal.querySelector(".modal__close-btn");
+addCardCloseBtn.addEventListener("click", () => closeModal(addCardModal));
 const addCardFormEl = addCardModal.querySelector(".modal__form");
-const captionInputEl = addCardFormEl.querySelector("#card-caption-input");
+const captionInputEl = addCardFormEl.querySelector("#card-description-input");
 const linkInputEl = addCardFormEl.querySelector("#card-link-input");
 
 const previewModal = document.querySelector("#preview-modal");
-const previewModalCloseBtn = previewModal.querySelector(".modal__close");
+const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
+previewModalCloseBtn.addEventListener("click", () => closeModal(previewModal));
 const previewImageEl = previewModal.querySelector(".modal__image");
 const previewNameEl = previewModal.querySelector(".modal__name");
 
@@ -87,8 +89,8 @@ function getCardElement(data) {
 }
 
 editProfileBtn.addEventListener("click", function () {
-  editNameInputEl.value = NameInputEl.textContent;
-  editdescriptionInputEl.value = descriptionInputEl.textContent;
+  editNameInputEl.value = ameInputEl.textContent;
+  editDescriptionInputEl.value = descriptionInputEl.textContent;
   editProfileModal.classList.add("modal_is-opened");
   openModal(editProfileModal);
 });
@@ -100,11 +102,6 @@ editProfileCloseBtn.addEventListener("click", () => {
 addCardBtn.addEventListener("click", function () {
   addCardModal.classList.add("modal_is-opened");
   openModal(editProfileModal);
-});
-
-editProfileCloseBtn.addEventListener("click", function () {
-  newPostModal.classList.remove("modal_is-opened");
-  closeModal(editProfileModal);
 });
 
 function openModal(modal) {
@@ -138,7 +135,7 @@ addCardFormEl.addEventListener("submit", function (evt) {
     name: captionInputEl.value,
     link: linkInputEl.value,
   });
-  cardsList.append(cardElement);
+  cardsList.prepend(cardElement);
 
   addCardModal.classList.remove("modal_is-opened");
 });
