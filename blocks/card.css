@@ -36,7 +36,7 @@
 }
 
 .card__like-btn-active {
-  background-image: url(../images/like.svg);
+  background-image: url(../images/hearticon.svg);
   opacity: 1;
 }
 
