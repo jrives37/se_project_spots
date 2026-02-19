@@ -120,12 +120,10 @@ function handleEditProfileSubmit(evt) {
   closeModal(editProfileModal);
 }
 
+console.log(cardImageInput.value);
+console.log(captionDescriptionInput.value);
 
-  console.log(cardImageInput.value);
-  console.log(captionDescriptionInput.value);
-
-  newPostModal.classList.remove("modal_is-opened");
-}
+newPostModal.classList.remove("modal_is-opened");
 
 addCardFormEl.addEventListener("submit", function (evt) {
   evt.preventDefault();
