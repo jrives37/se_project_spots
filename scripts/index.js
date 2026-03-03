@@ -84,6 +84,7 @@ function getCardElement(data) {
   cardImageEl.addEventListener("click", () => {
     previewImageEl.src = data.link;
     previewImageEl.alt = data.name;
+    previewNameEl.textContent = data.name;
     openModal(previewModal);
   });
 
@@ -128,8 +129,9 @@ addCardFormEl.addEventListener("submit", function (evt) {
     link: linkInputEl.value,
   });
   cardsList.prepend(cardElement);
-
-  addCardModal.classList.remove("modal_is-opened");
+  captionInputEl.value = "";
+  linkInputEl.value = "";
+  closeModal(addCardModal);
 });
 
 initialCards.forEach(function (item) {

@@ -52,6 +52,7 @@
 }
 
 .modal__close-btn_type_preview {
+  background-image: url(../images/closebtn.svg);
   top: 0;
   right: -52.5px;
 }
@@ -124,13 +125,13 @@
 }
 
 .modal__caption {
+  margin: 0;
   padding: 4px 8px;
   background-color: #212121;
   max-width: 214px;
-  height: 32px;
   color: white;
   font-family: Poppins, Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 120%;
   font-weight: 500;
   text-align: center;
