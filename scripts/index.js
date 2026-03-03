@@ -91,8 +91,8 @@ function getCardElement(data) {
 }
 
 editProfileBtn.addEventListener("click", function () {
-  nameInputEl.value = profileInputEl.textContent;
-  descriptionInputEl.value = profileDescriptionInputEl.textContent;
+  nameInputEl.value = profileNameEl.textContent;
+  descriptionInputEl.value = profileDescriptionEl.textContent;
   openModal(editProfileModal);
 });
 
@@ -112,12 +112,12 @@ function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
 
+editFormEl.addEventListener("submit", handleEditProfileSubmit);
+
 function handleEditProfileSubmit(evt) {
-  editFormEl.addEventListener("submit", handleEditProfileSubmit);
   evt.preventDefault();
   profileNameEl.textContent = nameInputEl.value;
   profileDescriptionEl.textContent = descriptionInputEl.value;
-  editProfileModal.classList.remove("modal_is-opened");
   closeModal(editProfileModal);
 }
 
