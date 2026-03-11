@@ -55,7 +55,7 @@ const previewModal = document.querySelector("#preview-modal");
 const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
 previewModalCloseBtn.addEventListener("click", () => closeModal(previewModal));
 const previewImageEl = previewModal.querySelector(".modal__image");
-const previewNameEl = previewModal.querySelector(".modal__name");
+const previewNameEl = previewModal.querySelector(".modal__caption");
 
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");

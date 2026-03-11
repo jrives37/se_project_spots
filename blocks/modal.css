@@ -52,7 +52,7 @@
 }
 
 .modal__close-btn_type_preview {
-  background-image: url(../images/closebtn.svg);
+  background-image: url(../images/whiteclosebtn.svg);
   top: 0;
   right: -52.5px;
 }
@@ -170,5 +170,8 @@
   }
   .modal__form {
     margin-top: 34px;
+  }
+  .modal__caption {
+    font-size: 16px;
   }
 }
