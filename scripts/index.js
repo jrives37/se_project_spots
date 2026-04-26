@@ -45,6 +45,7 @@ const descriptionInputEl = editProfileModal.querySelector(
 const addCardModal = document.querySelector("#new-post-modal");
 const addCardCloseBtn = addCardModal.querySelector(".modal__close-btn");
 addCardCloseBtn.addEventListener("click", () => closeModal(addCardModal));
+const cardSubmitBtn = addCardModal.querySelector(".modal__submit-btn");
 const addCardFormEl = addCardModal.querySelector(".modal__form");
 const captionInputEl = addCardFormEl.querySelector(
   "#caption-description-input",
@@ -102,15 +103,38 @@ editProfileCloseBtn.addEventListener("click", () => {
 });
 
 addCardBtn.addEventListener("click", function () {
+  addCardFormEl.reset();
+  resetValidation(addCardFormEl);
   openModal(addCardModal);
 });
 
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    const openModalEl = document.querySelector(".modal_is-opened");
+    if (openModalEl) {
+      closeModal(openModalEl);
+    }
+  }
+}
+
+function handleOverlayClick(evt) {
+  if (evt.target.classList.contains("modal")) {
+    closeModal(evt.target);
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+
+  document.addEventListener("keydown", handleEscape);
+  modal.addEventListener("mousedown", handleOverlayClick);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+
+  document.removeEventListener("keydown", handleEscape);
+  modal.removeEventListener("mousedown", handleOverlayClick);
 }
 
 editFormEl.addEventListener("submit", handleEditProfileSubmit);
@@ -124,14 +148,30 @@ function handleEditProfileSubmit(evt) {
 
 addCardFormEl.addEventListener("submit", function (evt) {
   evt.preventDefault();
+
+  const inputList = Array.from(addCardFormEl.querySelectorAll(".modal__input"));
+
+  const isInvalid = hasInvalidInput(inputList);
+
+  if (isInvalid) return;
+
   const cardElement = getCardElement({
     name: captionInputEl.value,
     link: linkInputEl.value,
   });
+
   cardsList.prepend(cardElement);
-  captionInputEl.value = "";
-  linkInputEl.value = "";
+
+  // close modal
   closeModal(addCardModal);
+
+  // ✅ reset form fields
+  addCardFormEl.reset();
+
+  // ✅ disable submit button again
+  const submitButton = addCardFormEl.querySelector(".modal__submit-btn");
+  submitButton.disabled = true;
+  submitButton.classList.add("modal__button_disabled");
 });
 
 initialCards.forEach(function (item) {

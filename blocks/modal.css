@@ -51,6 +51,14 @@
   background-repeat: no-repeat;
 }
 
+.modal__button_disabled {
+  background-color: #212121;
+  padding: 18px 32px;
+  opacity: 0.5;
+  border-radius: 8px;
+  gap: 8px;
+}
+
 .modal__close-btn_type_preview {
   background-image: url(../images/whiteclosebtn.svg);
   top: 0;
@@ -63,7 +71,7 @@
 
 .modal__title {
   margin: 0 0 32px;
-  font: "Poppins", Arial, sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
   font-weight: 500;
   font-size: 32px;
   line-height: 1;
@@ -79,6 +87,7 @@
   margin: 0 0 32px;
   font: "Poppins";
   font-size: 16px;
+  display: block;
 }
 
 .modal__input {
@@ -95,8 +104,22 @@
   line-height: 1;
 }
 
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0);
+}
+
 .modal__input::placeholder {
   color: #2121214d;
+}
+
+.modal__error {
+  display: block;
+  color: #ff0000;
+  opacity: 0.7;
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 8px;
 }
 
 .modal__submit-btn {
