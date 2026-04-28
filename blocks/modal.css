@@ -132,6 +132,7 @@
   padding: 18px 32px;
   border-radius: 8px;
   cursor: pointer;
+  border: none;
 }
 
 .modal__image-container {

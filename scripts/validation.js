@@ -84,14 +84,4 @@ const resetValidation = (formElement) => {
   disableButton(buttonElement);
 };
 
-function enableValidation(config) {
-  const formList = document.querySelectorAll(config.formSelector);
-  formList.forEach((formEl) => {
-    setEventListeners(formEl, config);
-  });
-}
-function setEventListeners(formElement, config) {
-  const buttonElement = formElement.querySelector(config.submitButtonSelector);
-}
-
 enableValidation(config);

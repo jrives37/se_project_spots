@@ -177,6 +177,4 @@ addCardFormEl.addEventListener("submit", function (evt) {
 initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
-  console.log(item.name);
-  console.log(item.link);
 });
