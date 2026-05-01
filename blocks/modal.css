@@ -51,7 +51,7 @@
   background-repeat: no-repeat;
 }
 
-.modal__button_disabled {
+.modal__submit-btn_disabled {
   background-color: #212121;
   padding: 18px 32px;
   opacity: 0.5;

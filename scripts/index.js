@@ -95,6 +95,7 @@ function getCardElement(data) {
 editProfileBtn.addEventListener("click", function () {
   nameInputEl.value = profileNameEl.textContent;
   descriptionInputEl.value = profileDescriptionEl.textContent;
+  resetValidation(addCardFormEl);
   openModal(editProfileModal);
 });
 
@@ -103,8 +104,6 @@ editProfileCloseBtn.addEventListener("click", () => {
 });
 
 addCardBtn.addEventListener("click", function () {
-  addCardFormEl.reset();
-  resetValidation(addCardFormEl);
   openModal(addCardModal);
 });
 
@@ -170,8 +169,7 @@ addCardFormEl.addEventListener("submit", function (evt) {
 
   // ✅ disable submit button again
   const submitButton = addCardFormEl.querySelector(".modal__submit-btn");
-  submitButton.disabled = true;
-  submitButton.classList.add("modal__button_disabled");
+  disableButton(submitButton);
 });
 
 initialCards.forEach(function (item) {
