@@ -14,14 +14,19 @@ const showInputError = (formElement, inputElement, errorMessage, config) => {
   inputElement.classList.add(config.inputErrorClass);
 };
 
-const showInputError = (formElement, inputElement, errorMessage, config) => {
+const hideInputError = (formElement, inputElement, errorMessage, config) => {
   const errorMessageID = inputElement.id + "-error";
   const errorMessageElement = formElement.querySelector("#" + errorMessageID);
   errorMessageElement.textContent = "";
   inputElement.classList.add(config.inputErrorClass);
 };
 
-const showInputError = (formElement, inputElement, errorMessage, config) => {
+const checkInputValidity = (
+  formElement,
+  inputElement,
+  errorMessage,
+  config,
+) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
@@ -35,14 +40,19 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const showInputError = (formElement, inputElement, errorMessage, config) => {
+const toggleButtonState = (formElement, inputElement, errorMessage, config) => {
   const errorMessageID = inputElement.id + "-error";
   const errorMessageElement = formElement.querySelector("#" + errorMessageID);
   errorMessageElement.textContent = errorMessage;
   inputElement.classList.add(config.inputErrorClass);
 };
 
-const showInputError = (formElement, inputElement, errorMessage, config) => {
+const disableButtonElement = (
+  formElement,
+  inputElement,
+  errorMessage,
+  config,
+) => {
   buttonElement.disabled = true;
   inputElement.classList.add(config.inputErrorClass);
 };
