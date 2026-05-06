@@ -95,7 +95,7 @@ function getCardElement(data) {
 editProfileBtn.addEventListener("click", function () {
   nameInputEl.value = profileNameEl.textContent;
   descriptionInputEl.value = profileDescriptionEl.textContent;
-  resetValidation(addCardFormEl);
+  resetValidation(addCardFormEl, config);
   openModal(editProfileModal);
 });
 
@@ -161,15 +161,12 @@ addCardFormEl.addEventListener("submit", function (evt) {
 
   cardsList.prepend(cardElement);
 
-  // close modal
   closeModal(addCardModal);
 
-  // ✅ reset form fields
   addCardFormEl.reset();
 
-  // ✅ disable submit button again
   const submitButton = addCardFormEl.querySelector(".modal__submit-btn");
-  disableButton(submitButton);
+  disableButton(submitButton, config);
 });
 
 initialCards.forEach(function (item) {
