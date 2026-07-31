@@ -254,6 +254,9 @@ addCardFormEl.addEventListener("submit", function (evt) {
 
   if (isInvalid) return;
 
+  const submitButton = addCardFormEl.querySelector(".modal__submit-btn");
+  submitButton.textContent = "Saving...";
+
   api
     .createCard({
       name: captionInputEl.value,
@@ -266,11 +269,13 @@ addCardFormEl.addEventListener("submit", function (evt) {
       closeModal(addCardModal);
       addCardFormEl.reset();
 
-      const submitButton = addCardFormEl.querySelector(".modal__submit-btn");
       disableButton(submitButton, config);
     })
-    .catch(console.error);
-}); // <-- THIS closes addEventListener
+    .catch(console.error)
+    .finally(() => {
+      submitButton.textContent = "Save";
+    });
+});
 
 deleteForm.addEventListener("submit", handleDeleteSubmit);
 
