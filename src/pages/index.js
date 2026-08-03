@@ -72,16 +72,18 @@ const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
 let selectedCard, selectedCardId;
+let currentUserId;
 
 api
   .getAppInfo()
   .then(([userData, cards]) => {
+    currentUserId = userData._id;
     profileName.textContent = userData.name;
     profileDescription.textContent = userData.about;
     profileAvatar.src = userData.avatar;
 
     cards.forEach((item) => {
-      const cardElement = getCardElement(item, userData._id);
+      const cardElement = getCardElement(item, currentUserId);
       cardsList.append(cardElement);
     });
   })
@@ -265,8 +267,9 @@ addCardFormEl.addEventListener("submit", function (evt) {
 
   if (isInvalid) return;
 
-  const submitButton = addCardFormEl.querySelector(".modal__submit-btn");
-  submitButton.textContent = "Saving...";
+  const submitButton = evt.submitter;
+
+  setButtonText(submitButton, true, "Saving...", "Save");
 
   api
     .createCard({
@@ -274,7 +277,7 @@ addCardFormEl.addEventListener("submit", function (evt) {
       link: linkInputEl.value,
     })
     .then((cardData) => {
-      const cardElement = getCardElement(cardData);
+      const cardElement = getCardElement(cardData, userId);
       cardsList.prepend(cardElement);
 
       closeModal(addCardModal);
@@ -284,7 +287,7 @@ addCardFormEl.addEventListener("submit", function (evt) {
     })
     .catch(console.error)
     .finally(() => {
-      submitButton.textContent = "Save";
+      setButtonText(submitButton, false, "Saving...", "Save");
     });
 });
 
