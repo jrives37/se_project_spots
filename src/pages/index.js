@@ -29,6 +29,16 @@ const profileDescriptionEl = document.querySelector(".profile__description");
 const avatarModalBtn = document.querySelector(".profile__avatar-btn");
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
+const deleteModalCloseBtn = deleteModal.querySelector(".modal__close-btn");
+const deleteCancelBtn = deleteModal.querySelector(".modal__cancel-btn");
+
+deleteModalCloseBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
+
+deleteCancelBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
 
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
@@ -66,14 +76,6 @@ let selectedCard, selectedCardId;
 api
   .getAppInfo()
   .then(([userData, cards]) => {
-    console.log("USER DATA:", userData);
-    console.log("AVATAR:", userData.avatar);
-    console.log("NAME:", userData.name);
-    console.log("ABOUT:", userData.about);
-
-    profileName.textContent = userData.name;
-    profileDescription.textContent = userData.about;
-    profileAvatar.src = userData.avatar;
     profileName.textContent = userData.name;
     profileDescription.textContent = userData.about;
     profileAvatar.src = userData.avatar;
@@ -124,6 +126,14 @@ function handleLike(evt, id) {
     .catch(console.error);
 }
 
+function handlePreview(data) {
+  previewImageEl.src = data.link;
+  previewImageEl.alt = data.name;
+  previewNameEl.textContent = data.name;
+
+  openModal(previewModal);
+}
+
 function getCardElement(data, userId) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
@@ -141,10 +151,11 @@ function getCardElement(data, userId) {
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
   cardTitleEl.textContent = data.name;
+  cardImageEl.addEventListener("click", () => {
+    handlePreview(data);
+  });
 
-  likeButton.addEventListener("click", (evt) =>
-    handleLike(evt, data._id, data.isLiked),
-  );
+  likeButton.addEventListener("click", (evt) => handleLike(evt, data._id));
 
   deleteButton.addEventListener("click", () =>
     handleDeleteCard(cardElement, data._id),
