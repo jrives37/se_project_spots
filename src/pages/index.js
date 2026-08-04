@@ -277,7 +277,7 @@ addCardFormEl.addEventListener("submit", function (evt) {
       link: linkInputEl.value,
     })
     .then((cardData) => {
-      const cardElement = getCardElement(cardData, userId);
+      const cardElement = getCardElement(cardData, currentUserId);
       cardsList.prepend(cardElement);
 
       closeModal(addCardModal);
