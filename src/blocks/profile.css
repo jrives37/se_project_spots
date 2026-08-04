@@ -7,7 +7,39 @@
 .profile__avatar {
   height: 190px;
   width: 190px;
+}
+
+.profile__avatar-container {
+  position: relative;
   margin-right: 20px;
+}
+
+.profile__avatar-btn {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  visibility: hidden;
+}
+
+.profile__avatar-container:hover .profile__avatar-btn {
+  visibility: visible;
+  height: 190px;
+  width: 190px;
+  border-radius: 8px;
+  color: #000000;
+  opacity: 50%;
+}
+
+.profile__avatar-btn::after {
+  content: "Edit Avatar";
+  font: "Poppins";
+  font-size: 16px;
+  color: #ffffff;
 }
 
 .profile__column {
@@ -15,6 +47,7 @@
   flex-direction: column;
   align-items: flex-start;
   max-width: 420px;
+  color: #a4a4a4;
 }
 
 .profile__name {
@@ -96,6 +129,15 @@
     padding-top: 20px;
   }
 
+  .profile__avatar-btn {
+    width: 80px;
+    height: 80px;
+  }
+
+  .profile__avatar-btn::after {
+    content: "";
+  }
+
   .profile__avatar {
     margin: 0 0 12px;
     height: 80px;
@@ -121,5 +163,9 @@
   .profile__add-btn {
     margin: 0;
     width: 100%;
+  }
+
+  .profile__avatar-container {
+    margin-right: 0;
   }
 }
